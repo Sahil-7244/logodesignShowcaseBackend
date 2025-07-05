@@ -53,6 +53,14 @@ const PORT = 8000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
+    cors({
+        origin: ["https://logodesignshowcaseadminwebsite.onrender.com", "https://logodesignshowcaseuserwebsite.onrender.com","http://localhost:3001", "http://localhost:3002", "http://localhost:3000"],
+        credentials: true,
+        methods: ["GET", "POST", "PUT", "DELETE"],
+    })
+);
+
+app.use(
     session({
       secret: "secret",
       resave: false,
@@ -62,13 +70,6 @@ app.use(
         sameSite: "none",  // required for cross-site cookies
         maxAge: 1000 * 60 * 60 * 24, // 1 day
       },
-    })
-);
-app.use(
-    cors({
-        origin: ["https://logodesignshowcaseadminwebsite.onrender.com", "https://logodesignshowcaseuserwebsite.onrender.com","http://localhost:3001", "http://localhost:3002", "http://localhost:3000"],
-        credentials: true,
-        methods: ["GET", "POST", "PUT", "DELETE"],
     })
 );
 
