@@ -54,9 +54,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
     session({
-        secret: "secret",
-        resave: false,
-        saveUninitialized: true,
+      secret: "secret",
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        secure: true,      // must be true on HTTPS (Render)
+        sameSite: "none",  // required for cross-site cookies
+        maxAge: 1000 * 60 * 60 * 24, // 1 day
+      },
     })
 );
 app.use(
