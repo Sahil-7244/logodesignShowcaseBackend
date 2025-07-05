@@ -121,6 +121,9 @@ app.get('/getexperience', GetExperience);
 //!Common APIs
 app.post('/session', Session);
 app.post('/logout', Logout);
+app.get("/api/ping", (req, res) => {
+    res.send("OK");
+  });
 
 
 connectDB();
