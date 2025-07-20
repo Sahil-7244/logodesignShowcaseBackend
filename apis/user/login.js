@@ -18,7 +18,6 @@ async function Login(req, res) {
         //session creation
         req.session.user = { session: user, isAuth: true };
         const userData = req.session.user;
-console.log("User Data: ", userData);
         res.status(200).json({
             userData,
             success: true,
