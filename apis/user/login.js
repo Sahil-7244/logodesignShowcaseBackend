@@ -14,7 +14,7 @@ async function Login(req, res) {
                 .status(401)
                 .json({ success: false, message: "Invalid username or password" });
         }
-
+console.log("User found:", user);
         //session creation
         req.session.user = { session: user, isAuth: true };
         const userData = req.session.user;
