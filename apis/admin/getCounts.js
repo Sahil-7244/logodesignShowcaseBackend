@@ -11,7 +11,7 @@ async function GetCounts(req, res) {
         const totalProductCount = await productCollection.countDocuments();
         const totalContactCount = await contactCollection.countDocuments();
         const totalEnquiryCount = await enquiryCollection.countDocuments();
-
+console.log(req.session.user);
         if (!req.session.user) {
             return res.status(401).json({ success: false, message: "Unauthorized User!" });
         }

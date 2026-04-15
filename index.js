@@ -46,6 +46,8 @@ const { EditExperience } = require('./apis/admin/editExperience');
 const { DeleteExperience } = require('./apis/admin/deleteExperience');
 const { GetExperience } = require('./apis/user/getexperience');
 const { SendMail } = require('./apis/user/sendmail');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 const PORT = 8000;
@@ -66,8 +68,8 @@ app.use(
       resave: false,
       saveUninitialized: false,
       cookie: {
-        secure: true,      // must be true on HTTPS (Render)
-        sameSite: "none",  // required for cross-site cookies
+        secure: process.env.NODE_ENV === "production" ? true : false,      // must be true on HTTPS (Render)
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",  // required for cross-site cookies
         maxAge: 1000 * 60 * 60 * 24, // 1 day
       },
     })
