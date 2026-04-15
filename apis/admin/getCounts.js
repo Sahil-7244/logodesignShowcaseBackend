@@ -6,11 +6,11 @@ async function GetCounts(req, res) {
     try {
         const db = await connectDB();
         const productCollection = db.collection("products");
-        const contactCollection = db.collection("contactUs");
-        const enquiryCollection = db.collection("enquiries");
+        const bannerCollection = db.collection("banner");
+        const carouselImageCollection = db.collection("carouselImage");
         const totalProductCount = await productCollection.countDocuments();
-        const totalContactCount = await contactCollection.countDocuments();
-        const totalEnquiryCount = await enquiryCollection.countDocuments();
+        const totalBannerCount = await bannerCollection.countDocuments();
+        const totalCarouselImageCount = await carouselImageCollection.countDocuments();
 console.log(req.session.user);
         if (!req.session.user) {
             return res.status(401).json({ success: false, message: "Unauthorized User!" });
@@ -18,8 +18,8 @@ console.log(req.session.user);
 
         res.status(200).json({
             totalProductCount,
-            totalContactCount,
-            totalEnquiryCount,
+            totalBannerCount,
+            totalCarouselImageCount,
             success: true,
             message: "Enquiries fetch Successful",
         });
