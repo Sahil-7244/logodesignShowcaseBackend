@@ -1,8 +1,7 @@
 const { MongoClient } = require("mongodb");
 
 const connectDB = async () => {
-//  const dbUrl = "mongodb+srv://jvcinfographics:JVC3836@cluster0.b4wyy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-  const dbUrl = "mongodb+srv://sahildb788:sahil7244@cluster1.7c2ai9b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1";
+  const dbUrl = process.env.DB_URL;
   try {
     const client = await MongoClient.connect(dbUrl);
     console.log("DB Connected");
