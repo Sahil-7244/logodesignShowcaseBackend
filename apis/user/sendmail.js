@@ -7,14 +7,14 @@ async function SendMail(req, res){
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'jvcinfographics@gmail.com', // Replace with your email from which every email will be sent
-            pass: 'wqzc dogu jxsq uiaa',       // Replace with your email password or app password
+            user: process.env.EMAIL_FROM, // Replace with your email from which every email will be sent
+            pass: process.env.EMAIL_PASSKEY,       // Replace with your email password or app password
         },
     });
 
     const mailOptions = {
         from: `"${name}" <${email}>`,
-        to: 'jvceditz.design75@gmail.com', // Your target email
+        to: process.env.EMAIL_TO, // Your target email
         subject: `New Contact Form Submission from ${name}`,
         text: `You have received a new message:
         Name: ${name}
